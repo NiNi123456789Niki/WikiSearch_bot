@@ -17,7 +17,7 @@ LEVELS = {
     "CRITICAL": logging.CRITICAL
 }
 
-def log(level: str, message: str):
+def log(level: str, message):
     frame = inspect.stack()[1]
     caller_file = frame.filename.split("/")[-1]
 

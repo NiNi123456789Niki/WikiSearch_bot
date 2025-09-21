@@ -1,6 +1,6 @@
 import re
 from urllib.parse import urlparse
-import logger
+from . import logger
 
 def get_page_title(text):
     match = re.search(r'https?://\S+', text)
@@ -12,3 +12,13 @@ def get_page_title(text):
         return title
     logger.log("WARN", "No page title found")
     return None
+
+
+def extract_category_or_article(text: str) -> str:
+    match = re.search(r"\*\*(.+?)\*\*", text)
+    if match:
+        item = match.group(1).strip()
+    else:
+        item = text.strip()
+
+    return item
